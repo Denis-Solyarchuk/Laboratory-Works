@@ -18,7 +18,7 @@ int main(array<System::String ^> ^args)
 
     if (N <= 0)
 {
-    Console::WriteLine(L"Error: the variant number can't be greater than 0!");
+    Console::WriteLine(L"Error: the variant number must be greater than 0!");
     return 0;
 }
 
