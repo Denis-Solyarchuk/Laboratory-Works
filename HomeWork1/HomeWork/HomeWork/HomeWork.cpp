@@ -7,18 +7,17 @@ int main(array<System::String ^> ^args)
     int N = 0;
     Console::Write(L"Enter your number: ");
 
-    try {
-        N = Int32::Parse(Console::ReadLine());
-    }
-    catch (FormatException^) {
-        Console::Write(L"Error: You need to enter a number, not a letter!");
+    String^ input = Console::ReadLine();
 
+    if (!Int32::TryParse(input, N))
+    {
+        Console::WriteLine(L"Error: Please enter a valid integer number!");
         return 1;
     }
 
     if (N <= 0)
 {
-    Console::WriteLine(L"Error: the variant number can't be greater than 0!");
+    Console::WriteLine(L"Error: the variant number can't be lower than 0!");
     return 0;
 }
 

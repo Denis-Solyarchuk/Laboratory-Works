@@ -21,16 +21,19 @@ int main(array<System::String ^> ^args)
 
     // 3
 
-    int cmp = String::Compare(str1, str2);
+    int cmp = String::Compare(str1, str2, StringComparison::Ordinal);
 
-    if (cmp == 0) {
-        Console::WriteLine(L"The lines are identical");
+    if (cmp == 0)
+    {
+        Console::WriteLine(L"The strings are identical");
     }
-    else if (cmp < 0) {
-        Console::WriteLine(L"The first line is shorter than the second");
+    else if (cmp < 0)
+    {
+        Console::WriteLine(L"The first string comes before the second");
     }
-    else {
-        Console::WriteLine(L"The first line is greater than the second");
+    else
+    {
+        Console::WriteLine(L"The first string comes after the second");
     }
 
     Console::Write(L"\n");

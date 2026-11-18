@@ -2,7 +2,7 @@
 
 using namespace System;
 
-// Функція для красивого виведення масиву в консоль
+// Г”ГіГ­ГЄГ¶ВіГї Г¤Г«Гї ГЄГ°Г Г±ГЁГўГ®ГЈГ® ГўГЁГўГҐГ¤ГҐГ­Г­Гї Г¬Г Г±ГЁГўГі Гў ГЄГ®Г­Г±Г®Г«Гј
 void PrintArray(String^ name, array<int>^ arr)
 {
     Console::Write("{0}: [ ", name);
@@ -13,36 +13,48 @@ void PrintArray(String^ name, array<int>^ arr)
     Console::WriteLine("]");
 }
 
-int main(array<System::String^>^ args)
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ РїРѕРµР»РµРјРµРЅС‚РЅРѕРіРѕ РѕР±РјС–РЅСѓ Р·РЅР°С‡РµРЅРЅСЏРјРё РґРІРѕС… РјР°СЃРёРІС–РІ
+void SwapArrays(array<int>^ A, array<int>^ B)
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    if (A == nullptr || B == nullptr || A->Length != B->Length)
+    {
+        Console::WriteLine(L"Error: Arrays must have the same size!");
+        return;
+    }
 
-    // Задаємо розмірність масивів
-    const int n = 6;
-
-    // Створення та ініціалізація вихідних керованих масивів A та B
-    array<int>^ A = gcnew array<int>(n) { 10, 20, 30, 40, 50, 60 };
-    array<int>^ B = gcnew array<int>(n) { 99, 88, 77, 66, 55, 44 };
-
-    Console::WriteLine(L"=== Вихідні масиви до обміну ===");
-    PrintArray("Масив A", A);
-    PrintArray("Масив B", B);
-    Console::WriteLine();
-
-    // Поелементний обмін значеннями
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < A->Length; i++)
     {
         int temp = A[i];
         A[i] = B[i];
         B[i] = temp;
     }
+}
 
-    Console::WriteLine(L"=== Масиви після обміну значеннями ===");
-    PrintArray("Масив A", A);
-    PrintArray("Масив B", B);
+int main(array<System::String^>^ args)
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
 
-    Console::WriteLine(L"\nНатисніть Enter для завершення...");
+    // Г‡Г Г¤Г ВєГ¬Г® Г°Г®Г§Г¬ВіГ°Г­ВіГ±ГІГј Г¬Г Г±ГЁГўВіГў
+    const int n = 6;
+
+    // Г‘ГІГўГ®Г°ГҐГ­Г­Гї ГІГ  ВіГ­ВіГ¶ВіГ Г«ВіГ§Г Г¶ВіГї ГўГЁГµВіГ¤Г­ГЁГµ ГЄГҐГ°Г®ГўГ Г­ГЁГµ Г¬Г Г±ГЁГўВіГў A ГІГ  B
+    array<int>^ A = gcnew array<int>(n) { 10, 20, 30, 40, 50, 60 };
+    array<int>^ B = gcnew array<int>(n) { 99, 88, 77, 66, 55, 44 };
+
+    Console::WriteLine(L"=== Г‚ГЁГµВіГ¤Г­Ві Г¬Г Г±ГЁГўГЁ Г¤Г® Г®ГЎГ¬ВіГ­Гі ===");
+    PrintArray("ГЊГ Г±ГЁГў A", A);
+    PrintArray("ГЊГ Г±ГЁГў B", B);
+    Console::WriteLine();
+
+    // РџРѕРµР»РµРјРµРЅС‚РЅРёР№ РѕР±РјС–РЅ Р·РЅР°С‡РµРЅРЅСЏРјРё РјР°СЃРёРІС–РІ
+    SwapArrays(A, B);
+
+    Console::WriteLine(L"=== ГЊГ Г±ГЁГўГЁ ГЇВіГ±Г«Гї Г®ГЎГ¬ВіГ­Гі Г§Г­Г Г·ГҐГ­Г­ГїГ¬ГЁ ===");
+    PrintArray("ГЊГ Г±ГЁГў A", A);
+    PrintArray("ГЊГ Г±ГЁГў B", B);
+
+    Console::WriteLine(L"\nГЌГ ГІГЁГ±Г­ВіГІГј Enter Г¤Г«Гї Г§Г ГўГҐГ°ГёГҐГ­Г­Гї...");
     Console::ReadLine();
 
     return 0;
